@@ -1,0 +1,6 @@
+mvn spring-boot:run
+mvn spring-boot:run -Dspring-boot.run.arguments=--CUSTOM.SERVER.PORT=9000
+mvn spring-boot:run -Dspring-boot.run.arguments="--CUSTOM.SERVER.PORT=9000 --EUREKA.SERVER.HOSTNAME=http://localhost:8761/eureka"
+mvn spring-boot:run -Dspring-boot.run.arguments="--CUSTOM.SERVER.PORT=9000 --EUREKA.SERVER.HOSTNAME=http://localhost:8761/eureka" -Dspring-boot.run.profiles=profile-01
+mvn spring-boot:run -Dspring-boot.run.profiles=profile-01
+		    
