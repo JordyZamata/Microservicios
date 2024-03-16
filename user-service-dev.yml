@@ -5,3 +5,10 @@ spring:
   data:
     mongodb:
       uri: mongodb://mitocode:mitocode@localhost:27017/mitocode?authSource=admin
+      #otra manera de conectarme a mongo db
+      #hots: localhost
+      #port: 27017
+      #database: mitocode
+      #username: mitocode
+      #password: mitocode
+      #authentication-database: admin
