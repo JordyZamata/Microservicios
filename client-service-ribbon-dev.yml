@@ -5,7 +5,7 @@ user-service-mitocode:
   ribbon:
     eureka:
       enabled: false
-    listOfServers: localhost:9010, localhost:9011, localhost:9012
+    listOfServers: localhost:9010, localhost:9011, localhost:9012, localhost:9013
     ServerListRefreshInterval: 1500
 
 product-service:
