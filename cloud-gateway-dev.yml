@@ -1,14 +1,25 @@
 server:
   port: ${CUSTOM.SERVER.PORT:9081}
 
-#Cloud Gateway Routes
+# Cloud Gateway Routes
 spring:
   cloud:
     gateway:
       routes:
+        
         - id: user-service-route
-          uri: lb://user-service #http://service1.com, http://service2.com
+          uri: lb://user-service # http://service1.com, http://service2.com
           predicates:
             - Path=/api/user-service/**
+          filters:
+            - StripPrefix=2
+            # - AddRequestHeader=token, MyToken
+            # - AddRequestParameter=email, choy
+            # - AddResponseHeader=token, ${spring.cloud.gateway.routes[0].id:mitocode}
+
+        - id: product-service-route
+          uri: lb://product-service # http://service1.com, http://service2.com
+          predicates:
+            - Path=/api/product-service/**
           filters:
             - StripPrefix=2
