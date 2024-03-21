@@ -45,7 +45,7 @@ spring:
               args:
                 name: user-service-cb
                 fallbackUri: forward:/api/user-service/mitocode/user
-                statusCodes: 400,401,403,500,503,504
+                statusCodes: 400,401,404,403,500,503,504
             # Primera implementación de custom filter, con nombre de clase CustomFilter
             #- name: CustomFilter
             #  args:
@@ -59,7 +59,7 @@ logging:
     org:
       springframework:
         cloud:
-          gateway: ALL
-        web: ALL
+          gateway: DEBUG
+        web: DEBUG
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
