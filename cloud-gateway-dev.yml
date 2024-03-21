@@ -47,8 +47,8 @@ spring:
 
             #Esta es con nombre declarado en un método
             - MitocodeFilter=MitocodeKey,MitocodeValue
-            #- name: CircuitBreaker
-            #  args:
-            #    name: user-service-cb
-            #    fallbackUri: forward:/api/user-service/mitocode/user
-            #    statusCodes: 400, 401, 403, 500,503,504
+            - name: CircuitBreaker
+              args:
+                name: user-service-cb
+                fallbackUri: forward:/api/user-service/mitocode/user
+                statusCodes: 400,401,403,500,503,504
