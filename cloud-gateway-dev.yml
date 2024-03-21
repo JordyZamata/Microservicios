@@ -39,8 +39,13 @@ spring:
             - Path=/api/product-service/**
           filters:
             - StripPrefix=2
-            #- MitocodeFilter=MitocodeKey,MitocodeValue
-            - name: CircuitBreaker
+            - name: CustomFilter
               args:
-                name: user-service-cb
-                fallbackUri: forward:/api/user-service/mitocode/user
+                headerKey: MitocodeKey
+                headerValue: MitocodeValue
+            #- MitocodeFilter=MitocodeKey,MitocodeValue
+            #- name: CircuitBreaker
+            #  args:
+            #    name: user-service-cb
+            #    fallbackUri: forward:/api/user-service/mitocode/user
+            #    statusCodes: 400, 401, 403, 500,503,504
