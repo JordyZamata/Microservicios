@@ -32,6 +32,10 @@ spring:
             # - AddRequestHeader=token, MyToken
             # - AddRequestParameter=email, choy
             # - AddResponseHeader=token, ${spring.cloud.gateway.routes[0].id:mitocode}
+            - name: CustomFilter
+              args:
+                headerKey: MitocodeKey2
+                headerValue: MitocodeValue2
 
         - id: product-service-route
           uri: lb://product-service # http://service1.com, http://service2.com
@@ -39,7 +43,7 @@ spring:
             - Path=/api/product-service/**
           filters:
             - StripPrefix=2
-            - name: CustomFilter
+            - name: CustomFilter2
               args:
                 headerKey: MitocodeKey
                 headerValue: MitocodeValue
