@@ -1,5 +1,5 @@
 server:
-  port: ${CUSTOM.SERVER.PORT:9082}
+  port: ${CUSTOM.SERVER.PORT:9080}
 
 # Circuit Breaker configuration
 resilience4j:
@@ -12,7 +12,7 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 8
         slowCallDurationThreshold: 1s
         slowCallRateThreshold: 50
-
+        
     instances:
       user-service-cb:
         base-config: mitocode-circuitbreaker #cualquierId
@@ -39,18 +39,19 @@ spring:
             - Path=/api/product-service/**
           filters:
             - StripPrefix=2
-            #Esta es con nombre declarado en un método
             - MitocodeFilter=MitocodeKey,MitocodeValue
             - name: CircuitBreaker
               args:
                 name: user-service-cb
-                fallbackUri: forward:/api/user-service/mitocode/user
                 statusCodes: 400,401,404,403,500,503,504
-            # Primera implementación de custom filter, con nombre de clase CustomFilter
-            #- name: CustomFilter
-            #  args:
-            #    headerKey: MitocodeKey
-            #    headerValue: MitocodeValue
+                fallbackUri: forward:/api/user-service/mitocodes/user
+      # Primera implementación de Custom Filter sin cambio de nombre
+            # - name: CustomFilter
+            #   args:
+            #     headerKey: MitocodeKey
+            #     headerValue: MitocodeValue
+
+
 # Logging Configuration
 logging:
   level:
